@@ -3,25 +3,28 @@ async function cadastraraluno(event) {
 
     const aluno = {
         nome: document.getElementById("nome").value,
-        telefone: document.getElementById("telefone").value,
-        email: document.getElementById("email").value,
-        cpf: document.getElementById("cpf").value,
+        cgm: document.getElementById("cgm").value,
+        nascimento_date: document.getElementById("nascimento_date").value,
+        cpf_aluno: document.getElementById("cpf_aluno").value,
         rg: document.getElementById("rg").value,
         genero: document.getElementById("genero").value,
-        data_de_nascimento: document.getElementById("data_de_nascimento").value,
+        email_aluno: document.getElementById("email_aluno").value,
+        telefone_aluno: document.getElementById("telefone_aluno").value,
+        endereço: document.getElementById("endereço").value,
         cep: document.getElementById("cep").value,
-        logradouro: document.getElementById("logradouro").value,
         numero: document.getElementById("numero").value,
         complemento: document.getElementById("complemento").value,
-        cidade: document.getElementById("cidade").value,
         bairro: document.getElementById("bairro").value,
+        cidade: document.getElementById("cidade").value,
         estado: document.getElementById("estado").value,
-        numero_de_matrícula: document.getElementById("numero_de_matrícula").value,
         curso: document.getElementById("curso").value,
-        periodo: document.getElementById("periodo").value,
         turno: document.getElementById("turno").value,
-        nome_responsavel: document.getElementById("nome_responsavel").value,
-        telefone_responsavel: document.getElementById("telefone_responsavel").value
+        turma: document.getElementById("turma").value,
+        responsavel: document.getElementById("responsavel").value,
+        grau_parentesco: document.getElementById("grau_parentesco").value,
+        cpf_responsavel: document.getElementById("cpf_responsavel").value,
+        telefone_responsavel: document.getElementById("telefone_responsavel").value,
+        email_responsavel: document.getElementById("email_responsavel").value
     };
 
     try {

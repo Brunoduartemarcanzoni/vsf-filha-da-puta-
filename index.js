@@ -26,30 +26,31 @@ db.serialize(() => {
     db.run(`
         CREATE TABLE IF NOT EXISTS aluno (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome,
-        telefone,
-        email,
-        cpf,
-        rg,
-        genero,
-        data_de_nascimento,
-        cep,
-        logradouro,
-        numero:,
-        complemento,
-        cidade,
-        bairro,
-        estado,
-        numero_de_matrícula,
-        curso,
-        periodo,
-        turno,
-        nome_responsavel,
-        telefone_responsavel
+        cgm integer PRIMARY KEY  NOT null UNIQUE,
+        nome varchar (400) not NULL,
+        nascimento_date not NULL, 
+        cpf_aluno varchar (11) not NULL UNIQUE,
+        rg varchar (9) NOT NULL unique,
+        genero text,
+        email_aluno varchar (800),
+        telefone_aluno varchar (15),
+        endereço varchar (500),
+        cep varchar (9),
+        numero integer,
+        complemento varchar (200),
+        bairro varchar (100),
+        cidade varchar (250),
+        estado varchar (150),
+        curso varchar (50) not null ,
+        turno varchar (20) NOT NULL,
+        turma varchar (10) not NULL,
+        responsavel varchar (500),
+        grau_parentesco varchar (40),
+        cpf_responsavel varchar (11) not NULL UNIQUE,
+        telefone_responsavel varchar (15),
+        email_responsavel varchar (800)
         )
     `);
-    
-
     console.log('Tabelas criadas com sucesso.');
 });
 
@@ -60,14 +61,14 @@ db.serialize(() => {
 
 // Cadastrar cliente
 app.post('/aluno', (req, res) => {
-    const { nome, cpf, email, telefone, endereco } = req.body;
+    const {cgm, nome, nascimento_date, cpf_aluno, rg, genero, email_aluno, telefone_aluno, endereço, cep, numero, complemento, bairro, cidade, estado, curso, turno, turma, responsavel, grau_parentesco, cpf_responsavel, telefone_responsavel, email_responsavel } = req.body;
 
     if (!nome || !cpf) {
         return res.status(400).send('Nome e CPF são obrigatórios.');
     }
 
-    const query = `INSERT INTO aluno (nome, cpf, email, telefone, endereco) VALUES (?, ?, ?, ?, ?)`;
-    db.run(query, [nome, cpf, email, telefone, endereco], function (err) {
+    const query = `INSERT INTO aluno (cgm, nome, nascimento_date, cpf_aluno, rg, genero, email_aluno, telefone_aluno, endereço, cep, numero, complemento, bairro, cidade, estado, curso, turno, turma, responsavel, grau_parentesco, cpf_responsavel, telefone_responsavel, email_responsavel) VALUES (?, ?, ?, ?, ?, ? , ? , ? , ? , ? , ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)`;
+    db.run(query, [cgm, nome, nascimento_date, cpf_aluno, rg, genero, email_aluno, telefone_aluno, endereço, cep, numero, complemento, bairro, cidade, estado, curso, turno, turma, responsavel, grau_parentesco, cpf_responsavel, telefone_responsavel, email_responsavel], function (err) {
         if (err) {
             return res.status(500).send('Erro ao cadastrar aluno.');
         }
